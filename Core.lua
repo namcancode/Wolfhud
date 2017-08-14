@@ -201,7 +201,11 @@ if not _G.WolfHUD then
 			HUDChat = {
 				CHAT_WAIT_TIME							= 10,		--Time before chat fades out, 0 = never
 				LINE_HEIGHT								= 15,		--Chat font Size
+				WIDTH									= 380,		--Width of the chat window
 				MAX_OUTPUT_LINES						= 8,		--Chat Output lines
+				MAX_INPUT_LINES							= 5,		--Number of lines of text you can type
+				COLORED_BG								= true,		--Colorize the line bg based on the message source
+				SCROLLBAR_ALIGN							= 2,		--Alignment of the scroll bar (1 = left, 2 = right)
 				SPAM_FILTER								= true,		--Filter PocoHud and NGBTO Chat Spam messages.
 			},
 			EnemyHealthbar = {
@@ -1379,6 +1383,18 @@ if not _G.WolfHUD then
 		else
 			WolfHUD:print_log("Localization folder seems to be missing!", "error")
 		end
+
+		-- Fix community market links for Real Weapon Names
+		Hooks:PostHook(EconomyTweakData, "create_weapon_skin_market_search_url" ,"WolfHUD_EconomyTweakDataPostCreateWeaponSkinMarketSearchUrl", function(self, weapon_id, cosmetic_id)
+			local cosmetic_name = tweak_data.blackmarket.weapon_skins[cosmetic_id] and managers.localization:text(tweak_data.blackmarket.weapon_skins[cosmetic_id].name_id)
+			local weapon_name = managers.localization.orig.text(managers.localization, tweak_data.weapon[weapon_id].name_id) -- bypass custom localizations
+			if cosmetic_name and weapon_name then
+				cosmetic_name = string.gsub(cosmetic_name, " ", "+")
+				weapon_name = string.gsub(weapon_name, " ", "+")
+				return string.gsub("http://steamcommunity.com/market/search?appid=218620&q=" .. cosmetic_name .. "+" .. weapon_name, "++", "+")
+			end
+			return nil
+		end)
 
 		local localized_strings = {}
 		localized_strings["cash_sign"] = WolfHUD:getTweakEntry("CASH_SIGN", "string", "$")
