@@ -201,11 +201,7 @@ if not _G.WolfHUD then
 			HUDChat = {
 				CHAT_WAIT_TIME							= 10,		--Time before chat fades out, 0 = never
 				LINE_HEIGHT								= 15,		--Chat font Size
-				WIDTH									= 380,		--Width of the chat window
 				MAX_OUTPUT_LINES						= 8,		--Chat Output lines
-				MAX_INPUT_LINES							= 5,		--Number of lines of text you can type
-				COLORED_BG								= true,		--Colorize the line bg based on the message source
-				SCROLLBAR_ALIGN							= 2,		--Alignment of the scroll bar (1 = left, 2 = right)
 				SPAM_FILTER								= true,		--Filter PocoHud and NGBTO Chat Spam messages.
 			},
 			EnemyHealthbar = {
@@ -231,8 +227,6 @@ if not _G.WolfHUD then
 				SCALE									= 1,
 				SKULL_SCALE								= 1.2,
 				SKULL_ALIGN								= 1,			-- left (1) or right (2)
-				HEIGHT	 								= 20,
-				ALPHA	 								= 1,
 				COLOR									= "yellow",
 				HEADSHOT_COLOR							= "red",
 			},
@@ -552,7 +546,6 @@ if not _G.WolfHUD then
 				STAT_SCREEN_SPEEDUP						= false,
 				STAT_SCREEN_DELAY 						= 5,		--Skip the experience screen after X seconds
 				AUTOPICK_CARD 							= true,		--Automatically pick a card on lootscreen
-				AUTOPICK_CARD_SPECIFIC 					= 4,		--left, center, right, random
 				LOOT_SCREEN_DELAY 						= 3,		--Skip the loot screen after X seconds
 				NO_SLOWMOTION 							= true,		--Disable mask-up and downed slow motion
 			},
@@ -686,13 +679,21 @@ if not _G.WolfHUD then
 				menu_options, true )
 	end
 
-	function WolfHUD:getVersion()    
-        local mod = BLT.Mods:GetMod("WolfHUD")
-		return tostring(mod and mod:GetVersion() or "(n/a)")
+	function WolfHUD:getVersion()
+		if not self.version then
+			for k, v in pairs(LuaModManager.Mods) do
+				local info = v.definition
+				if info["name"] == "WolfHUD" then
+					self.version = info["version"] or self.version
+					break
+				end
+			end
+		end
+
+		return self.version
 	end
 
 	function WolfHUD:checkOverrides()
-        do return end   -- TODO: Needs to be redone with new BLT system!
 		local updates = {}
 		for k, v in pairs(LuaModManager.Mods) do
 			local info = v.definition
@@ -952,7 +953,7 @@ if not _G.WolfHUD then
 			end
 		end
 
-		create_menu({menu_options}, "blt_options")
+		create_menu({menu_options}, "lua_mod_options_menu")
 	end)
 
 	--Populate options menus
@@ -1237,7 +1238,7 @@ if not _G.WolfHUD then
 			end
 		end
 
-		populate_menu({menu_options}, "blt_options")
+		populate_menu({menu_options}, "lua_mod_options_menu")
 	end)
 
 	-- Create callbacks and finalize menus
@@ -1340,7 +1341,7 @@ if not _G.WolfHUD then
 			end
 		end
 
-		finalize_menu({menu_options}, "blt_options") -- BLT.Mods.Constants:LuaModOptionsMenuID() -- Linking to wrong menu ID
+		finalize_menu({menu_options}, "lua_mod_options_menu")
 	end)
 
 	--Add localiszation strings
@@ -1378,18 +1379,6 @@ if not _G.WolfHUD then
 		else
 			WolfHUD:print_log("Localization folder seems to be missing!", "error")
 		end
-
-		-- Fix community market links for Real Weapon Names
-		Hooks:PostHook(EconomyTweakData, "create_weapon_skin_market_search_url" ,"WolfHUD_EconomyTweakDataPostCreateWeaponSkinMarketSearchUrl", function(self, weapon_id, cosmetic_id)
-			local cosmetic_name = tweak_data.blackmarket.weapon_skins[cosmetic_id] and managers.localization:text(tweak_data.blackmarket.weapon_skins[cosmetic_id].name_id)
-			local weapon_name = managers.localization.orig.text(managers.localization, tweak_data.weapon[weapon_id].name_id) -- bypass custom localizations
-			if cosmetic_name and weapon_name then
-				cosmetic_name = string.gsub(cosmetic_name, " ", "+")
-				weapon_name = string.gsub(weapon_name, " ", "+")
-				return string.gsub("http://steamcommunity.com/market/search?appid=218620&q=" .. cosmetic_name .. "+" .. weapon_name, "++", "+")
-			end
-			return nil
-		end)
 
 		local localized_strings = {}
 		localized_strings["cash_sign"] = WolfHUD:getTweakEntry("CASH_SIGN", "string", "$")
