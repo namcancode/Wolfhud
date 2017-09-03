@@ -138,7 +138,7 @@ if requiredScript == "lib/managers/menumanager" then
 
 		if table.size(saved_plans) <= 0 then
 			self:create_divider(node, "title_category_saved_plans", managers.localization:text("wolfhud_preplanning_error_no_saved_plans"), nil, tweak_data.screen_colors.text)
-			selected_item = "title_category_saved_plans"
+			selected_item = "title_category_saved_plans"    -- TODO: crashing with controllers? Might have to set this 'nil' here...
 		else
 			if PrePlanningManager._PREPLANNING_DELETE_MODE then
 				self:create_divider(node, "title_category_saved_plans", managers.localization:text("wolfhud_preplanning_delete"), nil, tweak_data.screen_colors.text)
@@ -293,7 +293,7 @@ elseif requiredScript == "lib/managers/preplanningmanager" then
 
 		function PrePlanningManager.save_plans()
 			if not file.DirectoryExists("./" .. PrePlanningManager._SAVE_FOLDER) then
-				WolfHUD:print_log("[WolfHUD] Preplanned folder '" .. PrePlanningManager._SAVE_FOLDER .. "' is missing!", "warning")
+				WolfHUD:print_log("Preplanned folder '" .. PrePlanningManager._SAVE_FOLDER .. "' is missing!", "warning")
 				WolfHUD:createDirectory("./" .. PrePlanningManager._SAVE_FOLDER)
 			end
 			local file = io.open(PrePlanningManager._SAVE_FILE, "w+")
