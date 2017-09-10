@@ -71,13 +71,13 @@
 	"victory_most_damage" : "Highest Damage:",
 	"victory_session_damage" : "Total Damage:",
 
-	"wolfhud_advassault_phase_title" : "Giai doan tan cong: ",
-	"wolfhud_advassault_spawns_title" : "So luong linh con lai: ",
+	"wolfhud_advassault_phase_title" : "Giai Doan: ",
+	"wolfhud_advassault_spawns_title" : "So linh: ",
 	"wolfhud_advassault_time_title" : "Thoi gian con lai: ",
 	"wolfhud_advassault_phase_anticipation" : "Du Kien",
-	"wolfhud_advassault_phase_build" : "Xay Dung",
+	"wolfhud_advassault_phase_build" : "Linh Dang Tap Hop",
 	"wolfhud_advassault_phase_sustain" : "Duy Tri",
-	"wolfhud_advassault_phase_fade" : "Rut Lui",
+	"wolfhud_advassault_phase_fade" : "Linh Dang Rut Lui",
 	"wolfhud_advassault_time_overdue" : "Qua Han",
 	"wolfhud_locked_assault" : "Cuoc tan cong quy mo lon!!!  Ra ngoai ngay khi co the!!!",
 
