@@ -76,7 +76,7 @@
 	"wolfhud_advassault_time_title" : "Thoi gian con lai: ",
 	"wolfhud_advassault_phase_anticipation" : "Du Kien",
 	"wolfhud_advassault_phase_build" : "Linh Dang Tap Hop",
-	"wolfhud_advassault_phase_sustain" : "Duy Tri",
+	"wolfhud_advassault_phase_sustain" : "Linh Dang Bao Toan Luc Luong",
 	"wolfhud_advassault_phase_fade" : "Linh Dang Rut Lui",
 	"wolfhud_advassault_time_overdue" : "Qua Han",
 	"wolfhud_locked_assault" : "Cuoc tan cong quy mo lon!!!  Ra ngoai ngay khi co the!!!",
