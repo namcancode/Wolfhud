@@ -79,7 +79,7 @@
 	"wolfhud_advassault_phase_sustain" : "Linh Dang Bao Toan Luc Luong",
 	"wolfhud_advassault_phase_fade" : "Linh Dang Rut Lui",
 	"wolfhud_advassault_time_overdue" : "Qua Han",
-	"wolfhud_locked_assault" : "Cuoc tan cong quy mo lon!!!  Ra ngoai ngay khi co the!!!",
+	"wolfhud_locked_assault" : "Linh dang AFK chuan bi cuoc tan cong quy mo lon!!!  Ra ngoai ngay khi co the!!!",
 
 	"wolfhud_customhud_interaction_done" : "DONE",
 	"wolfhud_customhud_interaction_aborted" : "ABORTED",
