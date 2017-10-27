@@ -362,6 +362,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			COLOR = WolfHUD:getSetting({"TabStats", "COLOR"}, "rainbow"),
 			SHOW_MASK = WolfHUD:getSetting({"TabStats", "SHOW_MASK"}, true)
 		}
+<<<<<<< HEAD
 
 		local placer = UiPlacer:new(10, 10, 0, 0)
 		local difficulty_text, difficulty_color = "", Color.white
@@ -371,6 +372,16 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 			local level_data = managers.job:current_level_data()
 			local mission = managers.crime_spree:get_mission(managers.crime_spree:current_played_mission())
 
+=======
+
+		local placer = UiPlacer:new(10, 10, 0, 0)
+		local difficulty_text, difficulty_color = "", Color.white
+
+		if managers.crime_spree:is_active() then
+			local level_data = managers.job:current_level_data()
+			local mission = managers.crime_spree:get_mission(managers.crime_spree:current_played_mission())
+
+>>>>>>> c6a42c6de8a184a5e5bbcf4af12df83c6bcfcf3f
 			if mission then
 				local level_str = managers.localization:to_upper_text(tweak_data.levels[mission.level.level_id].name_id) or ""
 
@@ -458,12 +469,19 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 		self:_create_stat_list_entry(placer, panel, self._rightpos[2], small_list_w, "cleaner_costs", managers.localization:to_upper_text("victory_civilians_killed_penalty"), "0", nil, self._tabstats_settings.FONT_SIZE or 18, nil, nil, nil)
 		placer:new_row(0, 12)
 		self:_create_stat_list_entry(placer, panel, self._rightpos[2], small_list_w, "bag_amount", managers.localization:to_upper_text("hud_stats_bags_secured") .. ":", "0", nil, self._tabstats_settings.FONT_SIZE or 18, nil, nil, nil)
+<<<<<<< HEAD
 		if not is_crime_spree then
 			placer:new_row()
 			self:_create_stat_list_entry(placer, panel, self._rightpos[2], small_list_w, "bag_cash", utf8.to_upper("Secured Bags value:"), "0", nil, self._tabstats_settings.FONT_SIZE or 18, nil, nil, nil)
 			placer:new_row()
 			self:_create_stat_list_entry(placer, panel, self._rightpos[2], small_list_w, "instant_cash", managers.localization:to_upper_text("hud_instant_cash") .. ":", "0", nil, self._tabstats_settings.FONT_SIZE or 18, nil, nil, nil)
 		end
+=======
+		placer:new_row()
+		self:_create_stat_list_entry(placer, panel, self._rightpos[2], small_list_w, "bag_cash", utf8.to_upper("Secured Bags value:"), "0", nil, self._tabstats_settings.FONT_SIZE or 18, nil, nil, nil)
+		placer:new_row()
+		self:_create_stat_list_entry(placer, panel, self._rightpos[2], small_list_w, "instant_cash", managers.localization:to_upper_text("hud_instant_cash") .. ":", "0", nil, self._tabstats_settings.FONT_SIZE or 18, nil, nil, nil)
+>>>>>>> c6a42c6de8a184a5e5bbcf4af12df83c6bcfcf3f
 		placer:new_row(0, 12)
 
 		if paygrade_title then
@@ -537,6 +555,7 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 
 			if not alltime_text then
 				placer:add_left(nil, value_w)
+<<<<<<< HEAD
 			end
 
 			local bg
@@ -552,6 +571,23 @@ if string.lower(RequiredScript) == "lib/managers/hud/newhudstatsscreen" then
 				placer:add_right(nil, -offset * 0.5)
 			end
 
+=======
+			end
+
+			local bg
+			if add_bg then
+				placer:add_left(nil, w - (2 * value_w) + (offset * 0.5))
+				bg = placer:add_right(panel:rect({
+					name = name and string.format("%s_bg", name) or nil,
+					w = w + offset,
+					h = font_size or 18,
+					color = Color.white:with_alpha(0.1),
+					layer = -1
+				}))
+				placer:add_right(nil, -offset * 0.5)
+			end
+
+>>>>>>> c6a42c6de8a184a5e5bbcf4af12df83c6bcfcf3f
 			if not skip_toggle_bg then
 				add_bg = not add_bg
 			end
