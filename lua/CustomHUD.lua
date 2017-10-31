@@ -556,7 +556,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 	end
 
 	function HUDTeammateCustom:set_delayed_damage(damage)
-<<<<<<< HEAD
 		local player_unit = managers.player:player_unit()
 		local player_damage = player_unit and player_unit:character_damage()
 		if player_damage then
@@ -569,9 +568,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 			}
 			self:call_listeners("delayed_damage", data)
 		end
-=======
-		self:call_listeners("delayed_damage", damage)
->>>>>>> c6a42c6de8a184a5e5bbcf4af12df83c6bcfcf3f
 		
 		if self:is_local_player() then
 			managers.network:session():send_to_peers("sync_delayed_damage_hud", damage)
@@ -607,7 +603,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 	end
 
 	function HUDTeammateCustom:set_grenade_cooldown(data)
-<<<<<<< HEAD
 		if data and data.end_time and data.duration then
 			local time_left = data.end_time - managers.game_play_central:get_heist_timer()
 			self:call_listeners("throwable_cooldown", time_left, data.duration)
@@ -621,17 +616,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 	function HUDTeammateCustom:animate_grenade_flash(...) 
 		self:call_listeners("throwable_cooldown_stop")
 	end
-=======
-		local time_left = (data.end_time - managers.game_play_central:get_heist_timer())
-		self:call_listeners("ability_cooldown", time_left, data.duration)
-
-		if self:is_local_player() then
-			managers.network:session():send_to_peers("sync_grenades_cooldown", data.end_time, data.duration)
-		end
-	end
-	
-	function HUDTeammateCustom:animate_grenade_flash(...) end
->>>>>>> c6a42c6de8a184a5e5bbcf4af12df83c6bcfcf3f
 
 	function HUDTeammateCustom:set_cable_tie(data)
 		self:call_listeners("cable_tie", data.icon)
@@ -2276,7 +2260,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		--self._maniac_stack_radial:set_color(Color(r, 1, 1))
 	end
 	
-<<<<<<< HEAD
 	function PlayerInfoComponent.PlayerStatus:set_delayed_damage(data)
 		local damage = data.damage or 0
 		local armor_max = data.total_armor or 1
@@ -2295,9 +2278,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		self.radial_delayed_damage_health:set_visible(health_damage_ratio > 0)
 		self.radial_delayed_damage_armor:set_color(Color(1, armor_damage_ratio, 1 - armor_ratio, 0))
 		self.radial_delayed_damage_health:set_color(Color(1, health_damage_ratio, 1 - health_ratio, 0))
-=======
-	function PlayerInfoComponent.PlayerStatus:set_delayed_damage(damage)
->>>>>>> c6a42c6de8a184a5e5bbcf4af12df83c6bcfcf3f
 		
 	end
 
@@ -3463,7 +3443,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		
 		text:set_text(string.format("%02.0f", amount))
 		text:set_range_color(0, amount < 10 and 1 or 0, Color.white:with_alpha(0.5))
-<<<<<<< HEAD
 		panel:set_visible(amount > 0 or self._animating_throwable_cooldown)
 		self:arrange()
 	end
@@ -3487,29 +3466,7 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 				panel:set_visible(visibility)
 				self:arrange()
 			end
-=======
-		icon:set_color(Color(amount <= 0 and 0.5 or 1, 1, 1, 1))
-		panel:set_visible(amount > 0 or true)
-		self:arrange()
-	end
-
-	function PlayerInfoComponent.Equipment:set_ability_cooldown(time_left, time_total)
-		local panel = self._panel:child("throwables")
-		local text = panel:child("amount")
-		text:stop()
-		text:set_text(string.format("%02.0f", math.max(time_left, 1)))
-		text:set_color(Color('FF7575'))
-		if time_left < 10 then
-			text:set_range_color(0, 1, Color('FF7575'):with_alpha(0.5))
 		end
-
-		if not panel:visible() then
-			panel:set_visible(true)
-			self:arrange()
->>>>>>> c6a42c6de8a184a5e5bbcf4af12df83c6bcfcf3f
-		end
-
-		text:animate(callback(self, self, "_animate_ability_cooldown"), time_left)
 	end
 
 	function PlayerInfoComponent.Equipment:set_deployable(icon)
@@ -3567,7 +3524,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		self:arrange()
 	end
 	
-<<<<<<< HEAD
 	function PlayerInfoComponent.Equipment:_animate_throwable_cooldown(panel, time_left)
 		self._animating_throwable_cooldown = true
 		local text = panel:child("amount")
@@ -3584,15 +3540,6 @@ if RequiredScript == "lib/managers/hud/hudteammate" then
 		end
 
 		self:stop_throwable_cooldown(false)
-=======
-	function PlayerInfoComponent.Equipment:_animate_ability_cooldown(text, amount)
-		while amount > 0 do
-			amount = amount - coroutine.yield()
-			text:set_text(string.format("%02.0f", math.ceil(amount)))
-			text:set_range_color(0, math.ceil(amount) < 10 and 1 or 0, Color('FF7575'):with_alpha(0.5))
-		end
-		text:set_color(Color.white)
->>>>>>> c6a42c6de8a184a5e5bbcf4af12df83c6bcfcf3f
 	end
 
 	PlayerInfoComponent.SpecialEquipment = PlayerInfoComponent.SpecialEquipment or class(PlayerInfoComponent.Base)
