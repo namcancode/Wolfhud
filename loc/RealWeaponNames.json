@@ -33,6 +33,7 @@
 	"bm_w_boot"					: "Winchester Model 1887",
 	"bm_w_rota"					: "Six12",
 	"bm_w_ching"				: "M1 Garand",
+	"bm_w_corgi"				: "FN F2000",
 
 	"bm_w_jowi" 				: "Akimbo Glock 26",
 	"bm_w_x_1911" 				: "Akimbo M1911 Lightweight Operator",
@@ -43,6 +44,8 @@
 	"bm_w_x_usp" 				: "Akimbo USP Tactical .45",
 	"bm_w_x_packrat" 			: "Akimbo H&K P30L",
 	"bm_w_x_chinchilla" 		: "Akimbo S&W Model 29",
+	"bm_w_x_basset" 			: "Akimbo Saiga Spike X1S",
+	"bm_w_x_shrew" 				: "Akimbo M1911 Colt Defender",
 
 	"bm_w_gre_m79" 				: "M79 Grenade Launcher",
 	"bm_w_saw" 					: "OVE9000",
@@ -89,6 +92,7 @@
 	"bm_w_lemming" 				: "FN Five-Seven",
 	"bm_w_chinchilla" 			: "S&W Model 29",
 	"bm_w_breech" 			    : "Luger P08",
+	"bm_w_shrew" 				: "M1911 Colt Defender",
 
 	"bm_w_m1928" 				: "Thompson M1928A1",
 	"bm_w_mac10" 				: "Ingram MAC-10",
@@ -119,10 +123,12 @@
 	"bm_w_serbu" 				: "Remington M870 Short-Barreled",
 	"bm_w_striker" 				: "Sentinel Armsel Striker",
 	"bm_w_m37" 					: "Ithaca 37",
+	"bm_w_basset" 				: "Saiga Spike X1S",
 
 	"bm_w_rpg7" 				: "RPG-7",
 	"bm_w_hunter" 				: "Avalanche Pistol Crossbow",
 	"bm_w_china" 				: "China Lake Grenade Launcher",
 	"bm_w_arbiter" 				: "H&K XM-25",
-	"bm_w_ray" 					: "M202 FLASH"
+	"bm_w_ray" 					: "M202 FLASH",
+	"bm_w_slap" 				: "H&K M320"
 }
