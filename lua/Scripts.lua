@@ -53,7 +53,7 @@ if string.lower(RequiredScript) == "lib/managers/hudmanagerpd2" then
 								[1] = {
 									text = managers.localization:text("dialog_yes"),
 									callback = function(self, item)
-										managers.chat:send_message(ChatManager.GAME, local_peer, "Game da tu bat dau.")
+										managers.chat:send_message(ChatManager.GAME, local_peer, "Game da bi bat dau.")
 										game_state_machine:current_state():start_game_intro()
 									end,
 								},
@@ -125,7 +125,7 @@ elseif string.lower(RequiredScript) == "lib/managers/menu/menunodegui" then
 	if MenuNodeMainGui then
 		Hooks:PostHook( MenuNodeMainGui , "_add_version_string" , "MenuNodeMainGuiPostAddVersionString_WolfHUD" , function( self )
 			if alive(self._version_string) then
-				self._version_string:set_text("Payday 2 v" .. Application:version() .. " | WolfHUD v" .. WolfHUD:getVersion())
+				self._version_string:set_text("Payday 2 v" .. Application:version() .. " | WolfHUD mod by NamDev v" .. WolfHUD:getVersion())
 			end
 		end)
 	end

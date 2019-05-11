@@ -758,6 +758,10 @@ if not _G.WolfHUD then
 					end
 				end
 			end,
+			["AssaultBanner"] = function(setting, value)
+					managers.hud:change_assaultbanner_setting(tostring(setting[#setting]), value)
+				end
+			end,
 			["TabStats"] = function(setting, value)
 				if managers.hud and managers.hud.change_tabstats_setting then
 					managers.hud:change_tabstats_setting(tostring(setting[#setting]), value)
@@ -769,7 +773,7 @@ if not _G.WolfHUD then
 				end
 			end,
 			["GADGETS"] = function(setting, value)
-				if managers.hud and managers.hud.change_hud_setting and #setting >= 4 then
+				if WeaponGadgetBase and WeaponGadgetBase.update_theme_setting and #setting >= 4 then
 					WeaponGadgetBase.update_theme_setting(setting[1], setting[2], setting[3], setting[4], WolfHUD:getColor(value) or value)
 				end
 			end,
