@@ -366,7 +366,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 					self:custom_waypoint_ecm_clbk("set_upgrade_level", key, data)
 				end
 			else
-				managers.waypoints:remove_waypoint(id, "jammer_time", "show", false)
+				managers.waypoints:remove_waypoint(id)
 			end
 		elseif managers.waypoints:get_waypoint(id) then
 			if event == "set_jammer_battery" then
@@ -479,12 +479,12 @@ if RequiredScript == "lib/managers/hudmanager" then
 					managers.waypoints:set_waypoint_setting(id, "color", HUDManager.CUSTOM_WAYPOINTS.TIMER.BROKEN_COLOR)
 					managers.waypoints:set_waypoint_setting(id, "show_offscreen", true)
 				else
-					managers.waypoints:set_waypoint_setting(id, "color", Color('FFFFFF'))
+					managers.waypoints:set_waypoint_setting(id, "color", Color.white)
 					managers.waypoints:set_waypoint_setting(id, "show_offscreen", false)
 				end
 			elseif event == "set_powered" then
 				if data.powered then
-					managers.waypoints:set_waypoint_setting(id, "color", Color('FFFFFF'))
+					managers.waypoints:set_waypoint_setting(id, "color", Color.white)
 					managers.waypoints:set_waypoint_setting(id, "show_offscreen", false)
 				else
 					managers.waypoints:set_waypoint_setting(id, "color", HUDManager.CUSTOM_WAYPOINTS.TIMER.BROKEN_COLOR)
@@ -529,7 +529,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 					type = "icon",
 					show = false,
 					scale = 1.65,
-					-- texture = "guis/textures/pd2/hud_shield",
+					texture = "guis/textures/pd2/hud_shield",
 					--texture_rect = {0, 0, 64, 64},
 					color = Color.white,
 					alpha = 0.2,
@@ -544,7 +544,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				health_dmg = {
 					type = "icon",
 					show = false,
-					scale = 0,
+					scale = 1.65,
 					texture = "guis/textures/pd2/hud_radial_rim",
 					--texture_rect = {0, 0, 64, 64},
 					color = Color.red,
@@ -553,7 +553,7 @@ if RequiredScript == "lib/managers/hudmanager" then
 				name = {
 					type = "label",
 					show = false,
-					-- text = WolfHUD:getCharacterName(unit_tweak, true)
+					text = WolfHUD:getCharacterName(unit_tweak, true)
 				},
 				kills = {
 					type = "label",
